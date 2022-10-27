@@ -3,9 +3,7 @@ package com.poc.mongoversion.mongoversionpoc.controller;
 import com.poc.mongoversion.mongoversionpoc.model.Person;
 import com.poc.mongoversion.mongoversionpoc.service.PersonService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +18,11 @@ public class PersonController {
     public List<Person> findAllPersons() {
         return personService.findAllPerson();
     }
+
+    @PostMapping
+    public Person createPerson(@RequestBody Person person) {
+        return personService.createPerson(person);
+    }
+
 
 }

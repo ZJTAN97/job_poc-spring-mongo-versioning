@@ -64,3 +64,75 @@ db.person.insertMany([
         education: "BASIC",
     },
 ]);
+
+// version 1
+db.runCommand({
+    collMod: "person",
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            description: "Document describing a person",
+            required: ["name", "age", "hobbies", "education"],
+            properties: {
+                name: {
+                    bsonType: "string",
+                    description: "Name must be a string and required",
+                },
+                age: {
+                    bsonType: "number",
+                    description: "Age must be a number and required",
+                    minimum: 1,
+                    maximum: 100,
+                },
+                hobbies: {
+                    bsonType: "array",
+                    description: "Hobbies must be an array of strings",
+                    minItems: 1,
+                    uniqueItems: true,
+                    items: {
+                        bsonType: "string",
+                    },
+                },
+                education: {
+                    enum: ["BASIC", "INTERMEDIATE", "ADVANCED"],
+                },
+            },
+        },
+    },
+});
+
+// version 2
+db.runCommand({
+    collMod: "person",
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            description: "Document describing a person",
+            required: ["name", "age", "hobbies", "education"],
+            properties: {
+                name: {
+                    bsonType: "string",
+                    description: "Name must be a string and required",
+                },
+                age: {
+                    bsonType: "number",
+                    description: "Age must be a number and required",
+                    minimum: 1,
+                    maximum: 100,
+                },
+                hobbies: {
+                    bsonType: "array",
+                    description: "Hobbies must be an array of strings",
+                    minItems: 1,
+                    uniqueItems: true,
+                    items: {
+                        bsonType: "string",
+                    },
+                },
+                education: {
+                    enum: ["INTERMEDIATE", "ADVANCED"],
+                },
+            },
+        },
+    },
+});
