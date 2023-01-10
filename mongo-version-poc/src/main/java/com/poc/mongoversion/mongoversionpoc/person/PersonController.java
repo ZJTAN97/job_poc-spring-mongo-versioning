@@ -1,7 +1,6 @@
-package com.poc.mongoversion.mongoversionpoc.controller;
+package com.poc.mongoversion.mongoversionpoc.person;
 
-import com.poc.mongoversion.mongoversionpoc.model.Person;
-import com.poc.mongoversion.mongoversionpoc.service.PersonService;
+import com.poc.mongoversion.mongoversionpoc.person.domain.Person;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +21,11 @@ public class PersonController {
     @PostMapping
     public Person createPerson(@RequestBody Person person) {
         return personService.createPerson(person);
+    }
+
+    @PutMapping("/{personId}")
+    public Person updatePerson(@RequestBody Person person, @PathVariable String personId) {
+        return personService.updatePerson(person, personId);
     }
 
 
