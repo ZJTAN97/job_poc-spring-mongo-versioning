@@ -30,7 +30,7 @@ public class Person {
 
     private Education education;
 
-    private Address address;
+    private List<Address> address;
 
     enum Education {
         BASIC,
