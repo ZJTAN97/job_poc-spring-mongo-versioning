@@ -19,6 +19,7 @@
 ### Id Related
 
 - `@Id` does not support Embedded documents.
+- Will have to manually create a helper class to manually generate sequential Id.
 
 <br>
 
@@ -37,8 +38,20 @@ From the table above, the conclusions are as followed:
 
 <br>
 
+# Conclusion
+
+- If we want to have auto generated Ids and Versioning, I think we will have to save it to MongoDB as a collection on its own
+- in this example, it would mean creating a collection for Address.
+- Using `@DBRef` to then reference from the Person Collection to the Address Collection
+
+<br>
+
+- Another work around is to make use of MongoTemplate and specifying the Id and Version manually during every insert/update.
+
+
 # References
 
 - [More on Optimistic Locking](https://www.baeldung.com/jpa-optimistic-locking)
 - [Embbeded Id issue](https://stackoverflow.com/questions/56913429/how-to-create-an-id-within-the-embedded-document-using-mongodb-and-spring-data)
 - [Embedded Id issue 2](https://www.baeldung.com/spring-boot-mongodb-auto-generated-field)
+- [Auto-Generated Field for MongoDB using Spring Boot](https://www.baeldung.com/spring-boot-mongodb-auto-generated-field)
