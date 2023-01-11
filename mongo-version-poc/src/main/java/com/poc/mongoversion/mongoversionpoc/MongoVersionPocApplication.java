@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class MongoVersionPocApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(MongoVersionPocApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(MongoVersionPocApplication.class, args);
+    }
 
 }

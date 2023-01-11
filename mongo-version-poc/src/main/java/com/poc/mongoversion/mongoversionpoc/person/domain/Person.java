@@ -26,13 +26,11 @@ public class Person {
 
     private int age;
 
-    private List<String> hobbies;
-
     private Education education;
 
     private List<Address> address;
 
-    enum Education {
+    public enum Education {
         BASIC,
         INTERMEDIATE,
         ADVANCED

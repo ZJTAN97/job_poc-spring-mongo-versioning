@@ -22,10 +22,14 @@ public class PersonService {
 
     public Person updatePerson(Person updatedPerson, String personId) {
         Person person = personRepository.findById(personId).orElseThrow();
-//        person.setName(updatedPerson.getName());
-//        person.setAddress(updatedPerson.getAddress());
-        return personRepository.save(person);
+        Person updated = person.toBuilder()
+                .name(updatedPerson.getName())
+                .age(updatedPerson.getAge())
+                .education(updatedPerson.getEducation())
+                .address(updatedPerson.getAddress())
+                .build();
 
+        return personRepository.save(updated);
     }
 
 
