@@ -38,7 +38,7 @@ public class PersonRepositoryTests {
 
     @Test
     @Order(2)
-    void updateRootDocument() {
+    void updateRootDocument_increasesRootDocumentVersion() {
         Person selectedPerson = personRepository
                 .findById(this.person.getId())
                 .orElseThrow();
@@ -52,7 +52,7 @@ public class PersonRepositoryTests {
 
     @Test
     @Order(3)
-    void updateEmbeddedDocument() {
+    void updateEmbeddedDocument_increasesRootDocumentVersion() {
         Person selectedPerson = personRepository.findById(this.person.getId()).orElseThrow();
         Address address2 = selectedPerson.getAddress().get(1);
         Address updatedAddress2 = address2.toBuilder()
@@ -74,7 +74,7 @@ public class PersonRepositoryTests {
     }
 
     @Test
-    @Order(3)
+    @Order(4)
     void delete() {
         personRepository.deleteById(this.person.getId());
         boolean exist = personRepository
